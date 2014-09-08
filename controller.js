@@ -10,10 +10,11 @@ angular.module('demo01.controller', [])
 
       console.log('demo01')
       $scope.lists = []
-      console.log($scope.lists)
-      $scope.edit.name = $scope.lists[$index];
-      //var edit = $scope.lisy[$index]
-      
+      $scope.edds = []
+      $scope.editList = function(edit){
+
+
+      }
       
 
       //$scope.newList = {name:'you good'}
@@ -26,14 +27,19 @@ angular.module('demo01.controller', [])
         $scope.lists.push(newList)
         delete $scope.newList
       }
-      $scope.editList = function($index,edit){
-      
-
-        $scope.lists[$index] = edit
+      $scope.editList = function($index,list){
+        
+        //$scope.edit = {name:$scope.lists[$index]}
+        console.log(list)
+        $scope.lists[$index] = list
+        console.log($scope.lists[$index])
         //console.log($scope.lists[$index])
         //console.log($index)
         //console.log($scope.lists[$index])
-
+      }
+      $scope.edd = function($index,edit){
+        //console.log($scope.lists[$index].name)
+        $scope.edit= {name:$scope.lists[$index].name}
       }
       $scope.deleteList = function($index) {
         //console.log($index)
