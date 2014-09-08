@@ -40,27 +40,30 @@
         <div class="container">
           <div class="col-lg-9">
            <form>
-           <input class="form-controll" ng-model='newList.name'>
+           <input class="form-controll" ng-model='newList.name'size="45">
            <button class="btn btn-info" type='submit' ng-click='addList(newList)'>+</button>
            </form>
            
              <div class="row" ng-repeat='list in lists' >
-             <!--<li ng-repeat='list in lists'>{{list.name}}</li>-->
-
-             <button class="col-lg-3 btn btn-danger " ng-click='deleteList($index)'  ng-class='{"done":list.done}'>Del</button>
-             <button class="col-lg-3 btn btn-primary" ng-click='checked=!checked;edd($index,edit) ' ng-init="checked=false"ng-bind="'Edit'" ></button>
-            <div ng-show="checked"class="ng-hide ">
-              <form>
-             <input class="form-controll" ng-model='list.name' >
-             <button class="col-lg-3 btn btn-primary" type='submit'ng-click='editList($index,list);checked=!checked' ng-bind="'Done'" ></button>
-             </form>
-            </div>
-            <div ng-hide="checked"class="ng-hide">
-             <h  class="col-lg-3" ng-bind="($index+1)+'.  '+list.name" ng-class='{"done":list.done}'></h>
-             <br></br>
-            </div>
              
-            </div >
+              <ul class="list-inline">
+               <button class="col-lg-3 btn btn-danger " ng-click='deleteList($index)'  ng-class='{"done":list.done}'>Del</button>
+               <button class="col-lg-3 btn btn-primary" ng-click='checked=!checked;edd($index,edit) ' ng-init="checked=false"ng-bind="'Edit'" ></button>
+            
+               <div ng-show="checked"class="ng-hide ">
+              
+               <input class="form-controll" ng-model='list.name'size="34" >
+               <button class="col-lg-3 btn btn-primary" type='submit'ng-click='editList($index,list);checked=!checked' ng-bind="'Done'" ></button>
+             
+               </div>
+               <li>
+               <div ng-hide="checked"class="ng-hide">
+               <h  class="col-lg-3" ng-bind="($index+1)+'.  '+list.name" ng-class='{"done":list.done}'></h>
+             
+               </div>
+               </li>
+               </ul>      
+              </div >
            
            
           </div>
