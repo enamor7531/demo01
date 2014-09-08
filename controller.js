@@ -7,15 +7,14 @@ angular.module('demo01.controller', [])
   .controller("demo01", ['$scope', '$http', '$window',
     function($scope, $http, $window) {
       $scope.checked = false
+
       console.log('demo01')
       $scope.lists = []
       console.log($scope.lists)
+      $scope.edit.name = $scope.lists[$index];
       //var edit = $scope.lisy[$index]
       
-      $scope.edd=function($index,edit){
-      var x = document.getElementById("editx")
-      x.value = $scope.lists[$index].name
-      }
+      
 
       //$scope.newList = {name:'you good'}
       $scope.addList = function(list) {
