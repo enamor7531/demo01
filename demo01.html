@@ -8,30 +8,18 @@
     <meta name="author" content="">
     <title>Cliff demo</title>
     <!-- Latest compiled and minified CSS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <!-- include the core styles -->
-    <link rel="stylesheet" href="alertify.js-0.3.11/themes/alertify.core.css" />
-    <link rel="stylesheet" href="alertify.js-0.3.11/themes/alertify.bootstrap.css" />
-    <!-- include a theme, can be included into the core instead of 2 separate files -->
-    <link rel="stylesheet" href="alertify.js-0.3.11/themes/alertify.default.css" />
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.js"></script>
-    
-    <script src="app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="controller.js"></script>
-    <script src='alertify.js-0.3.11/src/alertify.js'></script>
+    <script src="app.js"></script>
   </head>
   <style type="text/css">
     .done{
           text-decoration: line-through;
     }
   </style>
-  <body ng-controller='demo01'>
+  <body ng-controller='controlDemo01'>
     <section>
       <div class="container">
         <div class="header">
@@ -43,34 +31,49 @@
            <input class="form-controll" ng-model='newList.name'size="45">
            <button class="btn btn-info" type='submit' ng-click='addList(newList)'>+</button>
            </form>
-           
              <div class="row" ng-repeat='list in lists' >
-             
-              <ul class="list-inline">
+              <ul class="list-inline">                
                <button class="col-lg-3 btn btn-danger " ng-click='deleteList($index)'  ng-class='{"done":list.done}'>Del</button>
                <button class="col-lg-3 btn btn-primary" ng-click='checked=!checked;edd($index,edit) ' ng-init="checked=false"ng-bind="'Edit'" ></button>
-            
-               <div ng-show="checked"class="ng-hide ">
-              
+               <span ng-if="list.done" class="animate-if">
+                I'm fucked.
+               </span>
+               <div ng-show="checked"class="ng-hide ">              
                <input class="form-controll" ng-model='list.name'size="34" >
                <button class="col-lg-3 btn btn-primary" type='submit'ng-click='editList($index,list);checked=!checked' ng-bind="'Done'" ></button>
-             
+
                </div>
                <li>
                <div ng-hide="checked"class="ng-hide">
-               <h  class="col-lg-3" ng-bind="($index+1)+'.  '+list.name" ng-class='{"done":list.done}'></h>
-             
+               <button  class="btn btn-success" ng-bind="($index+1)+'.  '+list.name"ng-click="open(list.name,$index)"></button>                 
                </div>
                </li>
-               </ul>      
-              </div >
+               </ul>   
+         
            
-           
+              </div >                    
           </div>
         </div>
-        <div class="row marketing"></div>
-        
+        <div class="row marketing"></div>        
       </div>
+      <!--                      -->      
+      <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header" >
+                <h3 class="modal-title">Have you done that?</h3>
+                </div>
+                <div class="modal-body">
+
+                  <ul>
+                      
+                     <li ng-bind="'fuck'+list.name"></li>  
+                     
+                  </ul>   
+                </div>
+                <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="finish(); ">Sure</button>
+                <button class="btn btn-warning" ng-click="notyet(); ">Not yet</button>
+                </div>
+      </script> 
     </section>
   </body>
 </html>

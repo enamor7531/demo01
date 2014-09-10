@@ -1,1 +1,1 @@
-var app = angular.module('home', ['demo01.controller'])
+var app = angular.module('home', ['demo01'])
